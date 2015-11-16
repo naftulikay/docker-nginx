@@ -17,6 +17,7 @@ ENV NGINX_VERSION=1.9.6-1~trusty
 # add nginx repository
 RUN apt-key adv --keyserver hkp://pgp.mit.edu --recv-keys 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62 >/dev/null \
     && apt-get update >/dev/null \
+    && DEBIAN_FRONTEND=noninteractive apt-get upgrade -y >/dev/null \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y nginx=$NGINX_VERSION inotify-tools >/dev/null
 
 # create a backup of the default config
